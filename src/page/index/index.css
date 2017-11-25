@@ -1,0 +1,9 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translate(2px);
+          transform: translate(2px);
+  background: url(./star48_on@2x.png); }
+
+/*# sourceMappingURL=index.css.map */
