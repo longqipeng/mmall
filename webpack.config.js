@@ -6,7 +6,7 @@ var path = require('path');
 var getHtmlConfig = function(name) {
 	return {
 		   template: './src/view/'+name+'.html',
-	  	   filename: 'view/'+name+'.html',
+	  	   filename: 'view/' + name +'.html',
 	  	   inject: 'body',
 	  	   chunks: ['common',name]
 	}
@@ -46,8 +46,8 @@ module.exports = {
 	          })		
 			},
 			{
-		        test: /\.(png|jpg|gif)$/i,
-		        use: 'url-loader?limit=2&name=[name].[ext]&outputPath=images/&publicPath=../'
+		        test:  /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+		        use: 'url-loader?limit=10240&name=[name].[ext]&outputPath=images/&publicPath=../'
 		        /*use: {
 		            loader: 'url-loader',
 		            options: {
@@ -58,14 +58,17 @@ module.exports = {
 			},
 			{
 				test: /\.html$/,
-			    use: {
-				    loader: 'html-loader',
-				    options: {
-				      attrs: [':data-src']
-				    }
-				  }
+			    use:  'html-loader'
 			}
 		]
+	},
+	resolve: {
+		 extensions: ['.js', '.vue', '.json'],
+		alias: {
+			util: path.resolve(__dirname + '/src/util/'),
+			page: path.resolve(__dirname + '/src/page/'),
+			view: path.resolve(__dirname + '/src/view/')
+		}
 	},
     plugins: [
           new webpack.optimize.CommonsChunkPlugin({
