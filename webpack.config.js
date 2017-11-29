@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var htmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
 
@@ -8,6 +8,7 @@ var getHtmlConfig = function(name) {
 		   template: './src/view/'+name+'.html',
 	  	   filename: 'view/' + name +'.html',
 	  	   inject: 'body',
+	  	   title: 'web app',
 	  	   chunks: ['common',name]
 	}
 }
@@ -55,10 +56,6 @@ module.exports = {
 		              name: 'images/[name].[ext]'
 		            }
 		        }*/
-			},
-			{
-				test: /\.html$/,
-			    use:  'html-loader'
 			}
 		]
 	},
@@ -80,7 +77,7 @@ module.exports = {
                disable: false,   
                allChunks: true
           }),
-          new HtmlWebpackPlugin(getHtmlConfig('index')),
-          new HtmlWebpackPlugin(getHtmlConfig('login'))
+          new htmlWebpackPlugin(getHtmlConfig('index')),
+          new htmlWebpackPlugin(getHtmlConfig('login'))
     ]
 };

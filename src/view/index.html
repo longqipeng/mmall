@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+		<%= require('html-loader!./layout/head-common.html') %>
+		<title><%= htmlWebpackPlugin.options.title %></title>
 	</head>
 	<body>
 		<div>hello index</div>
       <a href="./login.html">登录</a>
-      <img src="../images/4.jpg" alt="pic" />
+      <img src="${require('../img/4.jpg')}" alt="pic" />
 		<script src="https://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
 	</body>
 </html>
