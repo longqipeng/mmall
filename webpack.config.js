@@ -47,7 +47,7 @@ module.exports = {
 	          })		
 			},
 			{
-		        test:  /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+		        test:  /\.(png|jpe?g|gif|svg|woff2?|eot|ttf|otf)(\?.*)?$/,
 		        use: 'url-loader?limit=10240&name=[name].[ext]&outputPath=images/&publicPath=../'
 		        /*use: {
 		            loader: 'url-loader',
@@ -62,6 +62,7 @@ module.exports = {
 	resolve: {
 		 extensions: ['.js', '.vue', '.json'],
 		alias: {
+			node_modules: path.resolve(__dirname + '/node_modules'),
 			util: path.resolve(__dirname + '/src/util/'),
 			page: path.resolve(__dirname + '/src/page/'),
 			view: path.resolve(__dirname + '/src/view/')
@@ -73,9 +74,7 @@ module.exports = {
                 filename: 'js/base.js'
           }),
           new ExtractTextPlugin({
-               filename: "css/styles.css",
-               disable: false,   
-               allChunks: true
+               filename: "css/[name].css"
           }),
           new htmlWebpackPlugin(getHtmlConfig('index')),
           new htmlWebpackPlugin(getHtmlConfig('login'))
