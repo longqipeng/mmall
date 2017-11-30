@@ -5,6 +5,7 @@
 		<title><%= htmlWebpackPlugin.options.title %></title>
 	</head>
 	<body>
+		<%= require('html-loader!./layout/nav-simple.html') %>
 		<div>hello index</div>
 		<div class="fa fa-user"></div>
       <a href="./login.html">登录</a>
@@ -12,5 +13,5 @@
       <div class="loading"></div>
       <div class="btn"></div>
 		<%= require('html-loader!./layout/footer.html') %>
-	</body>s
+	</body>
 </html>
